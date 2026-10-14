@@ -5,3 +5,9 @@
  * Join actor with film_actor.
  * Then use a window function with an appropriate ORDER BY clause (no PARTITION BY).
  */
+
+SELECT actor.actor_id, actor.first_name, actor.last_name, count(*) AS films, RANK() OVER (ORDER BY count(*) DESC) AS rnk
+FROM actor
+JOIN film_actor ON actor.actor_id = film_actor.actor_id
+GROUP BY actor.actor_id
+ORDER BY rnk, actor.actor_id;

@@ -8,5 +8,6 @@ FROM staff
 JOIN payment ON staff.staff_id = payment.staff_id
 WHERE payment_date >= '2020-01-01'
   AND payment_date < '2020-02-01'
-GROUP BY staff.staff_id;
+GROUP BY staff.staff_id
+ORDER BY staff.first_name;
 
